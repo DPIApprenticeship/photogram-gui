@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     url_username = params.fetch(:username)
 
     @user = User.where({ :username => url_username}).first
+    @photos = @user.own_photos.order({:created_at => :desc})
 
     if @user == nil
       redirect_to("/404")

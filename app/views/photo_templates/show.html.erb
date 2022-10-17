@@ -1,0 +1,37 @@
+<h1>Photo Details</h1>
+
+<dl>
+  <dt>Image</dt>
+  <dd></dd>
+
+  <dt>Owner</dt>
+  <dd></dd>
+
+  <dt>Posted</dt>
+  <dd></dd>
+
+  <dt>Edit photo</dt>
+  <dd></dd>
+
+  <dt>Delete photo</dt>
+  <dd></dd>
+</dl>
+
+<h2>Comments</h2>
+<table>
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.commenter.username %></td>
+      <td><%= comment.body %></td>
+      <td><%= comment.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<h3>Add a new comment</h3>
