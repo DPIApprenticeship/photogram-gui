@@ -4,6 +4,9 @@
   <dt>Image</dt>
   <dd><img src="<%= @photo.image  %>"></dd>
 
+  <dt>Caption</dt>
+  <dd><%= @photo.caption %></dd>
+
   <dt>Owner</dt>
   <dd><%= @photo.poster.username %></dd>
 
@@ -11,7 +14,17 @@
   <dd><%= @photo.created_at %></dd>
 
   <dt>Edit photo</dt>
-  <dd></dd>
+  <dd>
+    <form action="/update_photo/<%= @photo.id %>">
+      <label for="image">Image</label>
+      <input id="image" name="image" value="<%= @photo.image  %>">
+
+      <label for="caption">Caption</label>
+      <textarea id="caption" name="caption"><%= @photo.caption %></textarea>
+
+      <button>Update photo</button>
+    </form>
+  </dd>
 
   <dt>Delete photo</dt>
   <dd><a href="/delete_photo/<%= @photo.id %>">Delete this photo</a></dd>
@@ -35,3 +48,4 @@
 
 
 <h3>Add a new comment</h3>
+
