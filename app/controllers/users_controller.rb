@@ -5,5 +5,16 @@ class UsersController < ApplicationController
   end
 
   def show
+    url_username = params.fetch(:username)
+
+    @user = User.where({ :username => url_username}).first
+
+    if @user == nil
+      redirect_to("/404")
+    else 
+      render({:template => "user_templates/show.html.erb"})
+    end
+
+
   end
 end
