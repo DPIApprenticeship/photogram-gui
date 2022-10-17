@@ -8,7 +8,13 @@ class PhotosController < ApplicationController
   def show
     photo_id = params.fetch(:photo_id)
     @photo = Photo.where({:id => photo_id}).first
-    @comments = @photo.comments
     render({:template => "/photo_templates/show.html.erb"})
+  end
+
+  def destroy
+    photo_id = params.fetch(:photo_id)
+    photo = Photo.where({:id => photo_id}).first
+    photo.destroy
+    redirect_to("/photos")
   end
 end
