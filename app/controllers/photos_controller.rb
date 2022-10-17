@@ -17,4 +17,19 @@ class PhotosController < ApplicationController
     photo.destroy
     redirect_to("/photos")
   end
+
+  def new
+    image = params.fetch(:image)
+    caption = params.fetch(:caption)
+    owner_id = params.fetch(:owner_id)
+
+    photo = Photo.new
+    photo.image = image
+    photo.caption = caption
+    photo.owner_id = owner_id.to_i
+
+    photo.save
+
+    redirect_to("/photos/#{photo.id}")
+  end
 end
